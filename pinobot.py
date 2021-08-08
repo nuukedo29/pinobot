@@ -30,7 +30,7 @@ HELP = """\
 <@{bot_id}> archive  
 
 *Repository*
-https://github.com/nuukedo29/pinobot
+<https://github.com/nuukedo29/pinobot>
 """
 
 db = {
@@ -69,7 +69,10 @@ async def on_message(message):
 	if command:
 
 		server_settings = db["server_settings"].get(str(message.guild.id), {})
-		channel = client.get_channel(int(server_settings.get("channel")))
+		pin_channel = None
+
+		if server_settings.get("channel"):
+			pin_channel = client.get_channel(int(server_settings.get("channel")))
 
 		if command[0]:
 
@@ -141,7 +144,7 @@ async def on_message(message):
 
 		return await message.channel.send(HELP.format(
 			bot_id=client.user.id,
-			channel_name=f'<#{channel.id}>' if channel else "#example",
+			channel_name=f'<#{pin_channel.id}>' if pin_channel else "#example",
 			threshold=server_settings.get("threshold", "5")
 		))
 
