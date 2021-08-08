@@ -41,14 +41,6 @@ def commit():
 	with open("data.json", "w") as file:
 		file.write(json.dumps(db, indent="\t", ensure_ascii=False))
 
-def upsert_object(object, key):
-	if key in object:
-		return object[key]
-	else:
-		_object = {}
-		object[key] = _object
-		return _object
-
 if not os.path.exists("./data.json"):
 	commit()
 
@@ -68,13 +60,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-
-	# if Message.content.startswith("!"):
-	# 	command, arguments = re.findall(r"^!([a-zA-Z]+)\s*(.*)")
-	# 	command = command.lower()
-
-	# 	if command == "": 
-	# 		pass
 
 	if message.author.id == client.user.id or message.author.bot:
 		return 
