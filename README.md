@@ -15,7 +15,7 @@ version: "3"
 services:
 
   pinobot:
-    image: ghcr.io/nuukedo29/pinobot:main
+    image: ghcr.io/nuukedo29/pinobot:master
     restart: unless-stopped
     environment:
       - DISCORD_TOKEN=<YOUR TOKEN HERE>
