@@ -134,7 +134,7 @@ async def on_message(message):
 						files.append(discord.File(await download(attachment.url), attachment.filename))
 					
 					await channel.send(
-						content=f"**{message.author.name}#{message.author.discriminator}** " + pin_message.content,
+						content=f"**{pin_message.author.name}#{pin_message.author.discriminator}** " + pin_message.content,
 						files=files	
 					)
 
